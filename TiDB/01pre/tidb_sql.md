@@ -15,6 +15,15 @@ CREATE TABLE `teacher` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `t` (
+  `id` int(11) NOT NULL,
+  `a` int(11) DEFAULT NULL,
+  `b` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_a` (`a`)
+) ENGINE=InnoDB;
+
 INSERT  INTO teacher(id,NAME,age) VALUES (1,'seven',18);
 INSERT  INTO teacher(id,NAME,age) VALUES (2,'qingshan',20);
 
@@ -125,4 +134,6 @@ mysql> explain select * from t1 straight_join t2 on (t1.a=t2.b);
 |  1 | SIMPLE      | t2    | ALL  | NULL          | NULL | NULL    | NULL | 1000 | Using where; Using join buffer (Block Nested Loop) |
 +----+-------------+-------+------+---------------+------+---------+------+------+----------------------------------------------------+
 
+explain select  sum(t1.a) from t1;
 
+explain select * from t1,t2 where t1.a=t2.a;
