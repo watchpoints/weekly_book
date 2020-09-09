@@ -655,8 +655,25 @@ sysbench --config-file=./sysbench-thread-1.cfg oltp_point_select --tables=16 --t
 
 
 
+## 补充
 
+/usr/share/sysbench
 
+-rwxr-xr-x 1 root root  1452 Mar 16  2019 bulk_insert.lua
+-rw-r--r-- 1 root root 14369 Mar 16  2019 oltp_common.lua
+-rwxr-xr-x 1 root root  1290 Mar 16  2019 oltp_delete.lua
+-rwxr-xr-x 1 root root  2415 Mar 16  2019 oltp_insert.lua
+-rwxr-xr-x 1 root root  1265 Mar 16  2019 oltp_point_select.lua
+-rwxr-xr-x 1 root root  1649 Mar 16  2019 oltp_read_only.lua
+-rwxr-xr-x 1 root root  1824 Mar 16  2019 oltp_read_write.lua
+-rwxr-xr-x 1 root root  1118 Mar 16  2019 oltp_update_index.lua
+-rwxr-xr-x 1 root root  1127 Mar 16  2019 oltp_update_non_index.lua
+-rwxr-xr-x 1 root root  1440 Mar 16  2019 oltp_write_only.lua
+-rwxr-xr-x 1 root root  1919 Mar 16  2019 select_random_points.lua
+-rwxr-xr-x 1 root root  2118 Mar 16  2019 select_random_ranges.lua
+
+https://asktug.com/t/topic/36280/4
+curl http://127.0.0.1:10080/debug/zip --output tidb_debug.zip
 
 
 ### 遗留TODO
