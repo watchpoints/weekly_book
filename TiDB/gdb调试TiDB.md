@@ -82,3 +82,11 @@ tiup cluster display tidb-test
 >
 > https://asktug.com/t/topic/36090
 
+
+
+
+
+
+
+### Windows上如何调试TIDB源码
+
