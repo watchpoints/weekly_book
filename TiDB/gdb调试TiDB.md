@@ -84,9 +84,59 @@ tiup cluster display tidb-test
 
 
 
+### Centos
+
+
+
+### 单元测试
+
+https://asktug.com/t/topic/36997
+
+
+
+如果不涉及 failpoint 的测试，可以
+
+cd tidb/kv
+go test -check.f TestBasicFunc
+
+如果涉及 failpoint 的，可以
+
+make failpoint-enable
+cd tidb/kv
+go test -check.f TestXXX
+cd …
+
+
+
+
+
+- 测试1-main函数
+
+~~~
+server:
+ifeq ($(TARGET), "")
+	CGO_ENABLED=1 $(GOBUILD) $(RACE_FLAG) -ldflags '$(LDFLAGS) $(CHECK_FLAG)' -o bin/tidb-server tidb-server/main.go
+else
+	CGO_ENABLED=1 $(GOBUILD) $(RACE_FLAG) -ldflags '$(LDFLAGS) $(CHECK_FLAG)' -o '$(TARGET)' tidb-server/main.go
+endif
+go test -check.f TestRunMain
+atal error: runtime: out of memory
+~~~
+
+
+
 
 
 
 
 ### Windows上如何调试TIDB源码
 
+
+
+
+
+
+
+## 参考
+
+- https://juejin.im/post/6844903992552587272
