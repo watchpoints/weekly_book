@@ -133,10 +133,33 @@ atal error: runtime: out of memory
 
 
 
+- 单元测试
+
+~~~
+cd D:\money\src\github.com\wangcy6\tidb\executor
+go test -check.f TestCastXXX //使用 go test -check.f $TEST_NAME 来指定测试用例
+~~~
+
+画外音
+
+- 这个比较消耗内存，我2G 云主机根本无法运行，直接报错 fatal error: runtime: out of memory
+
+- 需要设置http_proxy,多执行几次。
+
+  
 
 
 
 
-## 参考
+
+
+
+## FQA
+
+- https://pingcap.com/blog-cn/30mins-become-contributor-of-tikv/ 三十分钟成为 Contributor | 为 TiKV 添加 built-in 函数
+
+- http://blog.minifish.org/posts/dlv/ --使用 delve 调试 Golang 程序
+
+-  https://asktug.com/t/topic/37122/2
 
 - https://juejin.im/post/6844903992552587272
