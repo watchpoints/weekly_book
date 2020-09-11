@@ -158,6 +158,10 @@ cd D:\money\src\github.com\wangcy6\tidb\executor
 go test -check.f TestCastXXX //使用 go test -check.f $TEST_NAME 来指定测试用例
 
 go test -check.f  TestAddExpressionIndex
+### DDL
+go test -check.f  testAddIndexWithPK
+go test -check.f  testAddColumn
+
 ~~~
 
 画外音
