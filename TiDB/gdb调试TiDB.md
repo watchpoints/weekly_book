@@ -151,7 +151,7 @@ atal error: runtime: out of memory
 
 
 
-- 单元测试
+- 单元测试 命令行
 
 ~~~
 cd D:\money\src\github.com\wangcy6\tidb\executor
@@ -205,6 +205,18 @@ https://blog.csdn.net/clearloveq/article/details/81708655
 > 主要来自 https://github.com/pingcap/tidb/pull/19084的思路 ，我电脑有问题安装失败
 >
 > 放弃了。
+
+
+
+- vscode 单元测试
+
+~~~
+https://www.jianshu.com/p/5b865a26cc51
+
+https://www.jianshu.com/p/d20978a82ca8
+~~~
+
+
 
 
 
