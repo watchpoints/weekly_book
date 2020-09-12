@@ -1,5 +1,15 @@
 
 
+# to_do 何调试TIDB源码
+
+
+
+后面调试，连接tikv，pd 可以连接服务器上的了，这个研究一下，
+
+## 一、Centos
+
+
+
 ### 准备
 
 1. 使用tiup 部署集群
@@ -82,3 +92,144 @@ tiup cluster display tidb-test
 >
 > https://asktug.com/t/topic/36090
 
+
+
+### Centos
+
+
+
+### 单元测试
+
+https://asktug.com/t/topic/36997
+
+
+
+如果不涉及 failpoint 的测试，可以
+
+cd tidb/kv
+go test -check.f TestBasicFunc
+
+如果涉及 failpoint 的，可以
+
+make failpoint-enable
+cd tidb/kv
+go test -check.f TestXXX
+cd …
+
+
+
+
+
+- 测试1-main函数
+
+~~~
+server:
+ifeq ($(TARGET), "")
+	CGO_ENABLED=1 $(GOBUILD) $(RACE_FLAG) -ldflags '$(LDFLAGS) $(CHECK_FLAG)' -o bin/tidb-server tidb-server/main.go
+else
+	CGO_ENABLED=1 $(GOBUILD) $(RACE_FLAG) -ldflags '$(LDFLAGS) $(CHECK_FLAG)' -o '$(TARGET)' tidb-server/main.go
+endif
+go test -check.f TestRunMain
+atal error: runtime: out of memory
+~~~
+
+
+
+
+
+- 客户端命令
+
+  ~~~mysql
+  mysql -h 127.0.0.1 -P 4000 -u root  -p
+  ~~~
+
+  
+
+
+
+## 二、Windows
+
+
+
+- 单元测试 命令行
+
+~~~
+cd D:\money\src\github.com\wangcy6\tidb\executor
+go test -check.f TestCastXXX //使用 go test -check.f $TEST_NAME 来指定测试用例
+
+go test -check.f  TestAddExpressionIndex
+### DDL
+go test -check.f  testAddIndexWithPK
+go test -check.f  testAddColumn
+
+~~~
+
+画外音
+
+> 这个比较消耗内存，我2G 云主机根本无法运行，直接报错 fatal error: runtime: out of memory
+
+> 需要设置http_proxy,多执行几次。
+
+
+
+- vsocde 调试【该方法可以，我电脑配置不行放弃了 】
+
+1. [安装PowerShell7](https://github.com/PowerShell/PowerShell/releases/tag/v7.0.0-preview.1) ，
+
+   Get-Host | Select-Object Version 2.0
+
+   
+
+   
+
+   ![image-20200910114743062](../images/image-20200910114743062.png)
+
+   需要Universal C Runtime (CRT) for Windows 7 --> Windows Management Framework (WMF) 5.0
+
+   (fuck 公司破系统，看来自己购买好好机器 ，最后安装失败，window10内置)
+
+   
+
+
+
+Windows Management Framework 4.
+
+https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7
+
+https://docs.microsoft.com/zh-cn/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-6
+
+https://blog.csdn.net/clearloveq/article/details/81708655
+
+画外音：
+
+> 主要来自 https://github.com/pingcap/tidb/pull/19084的思路 ，我电脑有问题安装失败
+>
+> 放弃了。
+
+
+
+- vscode 单元测试
+
+~~~
+https://www.jianshu.com/p/5b865a26cc51
+
+https://www.jianshu.com/p/d20978a82ca8
+~~~
+
+
+
+
+
+
+
+
+
+## FQA
+
+- https://pingcap.com/blog-cn/30mins-become-contributor-of-tikv/ 三十分钟成为 Contributor | 为 TiKV 添加 built-in 函数
+
+- http://blog.minifish.org/posts/dlv/ --使用 delve 调试 Golang 程序
+
+-  https://asktug.com/t/topic/37122/2
+
+- https://juejin.im/post/6844903992552587272

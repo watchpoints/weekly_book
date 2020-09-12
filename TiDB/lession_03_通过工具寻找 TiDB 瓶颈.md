@@ -676,6 +676,26 @@ go tool pprof heap.profile
 sudo apt-get install pstack strace
 pstack  16281
 strace -p  16281
+
+
+
+curl http://127.0.0.1:10080/debug/zip --output tidb_debug.zip
+profile就是定时采样，收集cpu，内存等信息，进而给出性能优化指导
+从terminal进入profile，进行细致分析
+go tool pprof http://localhost:6060/debug/pprof/profile
+go tool pprof http://localhost:6060/debug/pprof/heap
+go tool pprof http://localhost:6060/debug/pprof/block
+
+作者：上海大坤哥
+链接：https://www.jianshu.com/p/162f44022eb7
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+go tool pprof http://{TiDBIP}:10080/debug/pprof/profile?seconds=30s 
+
+curl http://0.0.0.0:10080/debug/pprof/goroutine?debug=2 --output stack.txt
+
+Go语言的性能分析工具pprof是Google C++ profiler的移植
 ~~~
 
 
