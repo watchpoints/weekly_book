@@ -1,0 +1,15 @@
+8.nfs挂载
+  （1）mount      //查看当前的挂载点及类型，直接输入df也可以
+  （2）systemctl status ganesha //查看ganesha服务状态
+   (3) systemctl start ganesha  //启用ganesha.起不来的话用restart
+   (4) icfs-admin-nfs   --query        //查询共享的nfs目录
+   (5）mount -t nfs IP：共享目录 挂载目录 -o vers=3  //挂载目录，mount -t nfs 100.2.83.236:/.  /mnt/nfs1 -o vers=3
+  （6）umount 目录 //卸载  umount /mnt/nfs1     //nfs 具体内容可在实施手册中查找nfs  
+   (7)创建共享目录
+ [root@Server ~]#icfs-admin-nfs --create -p /home/inspur/nfsshare -a rw-d     //例：创建根目录为共享目录icfs-admin-nfs --create -p  /. -a rw-d
+ 
+   说明：在nfs挂载点下无法使用 icfs-query-dir 目录  self 来查询目录所属mds，可以再挂载一个fuse,在fuse挂载点下使用该命令查询
+ 3）删除共享目录
+[root@Server ~]#icfs-admin-nfs --delete -p /home/inspur/nfsshare
+
+
