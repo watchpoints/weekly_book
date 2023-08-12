@@ -1,0 +1,3 @@
+/Users/wangchuanyi/doc/daily-interview/code/2021/gtest/build/CMakeFiles/rebuild_cache.dir
+/Users/wangchuanyi/doc/daily-interview/code/2021/gtest/build/CMakeFiles/edit_cache.dir
+/Users/wangchuanyi/doc/daily-interview/code/2021/gtest/build/CMakeFiles/Hello.dir

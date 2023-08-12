@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="1" disabled="0" errors="0" time="0" timestamp="2021-10-11T15:11:55.944" name="AllTests">
+  <testsuite name="testCase" tests="2" failures="1" disabled="0" skipped="0" errors="0" time="0" timestamp="2021-10-11T15:11:55.944">
+    <testcase name="test1" status="run" result="completed" time="0" timestamp="2021-10-11T15:11:55.944" classname="testCase" />
+    <testcase name="test2" status="run" result="completed" time="0" timestamp="2021-10-11T15:11:55.944" classname="testCase">
+      <failure message="/Users/wangchuanyi/doc/daily-interview/code/2021/gtest/test_demo.cpp:12&#x0A;Expected equality of these values:&#x0A;  add(4,4)&#x0A;    Which is: 8&#x0A;  7" type=""><![CDATA[/Users/wangchuanyi/doc/daily-interview/code/2021/gtest/test_demo.cpp:12
+Expected equality of these values:
+  add(4,4)
+    Which is: 8
+  7]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
